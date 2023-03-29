@@ -1,28 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
-            xmlns:app="http://schemas.android.com/apk/res-auto"
-            xmlns:tools="http://schemas.android.com/tools"
+            xmlns:app="http://schemas.android.com/apk/res-auto" xmlns:tools="http://schemas.android.com/tools"
             android:id="@+id/nav_graph"
-            app:startDestination="@id/FirstFragment">
-
-    <fragment
-            android:id="@+id/FirstFragment"
-            android:name="com.example.material3weatherapp.FirstFragment"
-            android:label="@string/first_fragment_label"
-            tools:layout="@layout/fragment_first">
-
-        <action
-                android:id="@+id/action_FirstFragment_to_SecondFragment"
-                app:destination="@id/SecondFragment"/>
+            app:startDestination="@id/homeScreenFragment">
+    <fragment android:id="@+id/homeScreenFragment"
+              android:name="com.example.material3weatherapp.features.homeScreen.HomeScreenFragment"
+              android:label="fragment_home_screen" tools:layout="@layout/fragment_home_screen">
+        <action android:id="@+id/action_homeScreenFragment_to_settingsFragment" app:destination="@id/settingsFragment"/>
+        <action android:id="@+id/action_homeScreenFragment_to_manageCitiesFragment"
+                app:destination="@id/manageCitiesFragment"/>
     </fragment>
-    <fragment
-            android:id="@+id/SecondFragment"
-            android:name="com.example.material3weatherapp.SecondFragment"
-            android:label="@string/second_fragment_label"
-            tools:layout="@layout/fragment_second">
-
-        <action
-                android:id="@+id/action_SecondFragment_to_FirstFragment"
-                app:destination="@id/FirstFragment"/>
-    </fragment>
+    <fragment android:id="@+id/manageCitiesFragment"
+              android:name="com.example.material3weatherapp.features.manageCities.ManageCitiesFragment"
+              android:label="fragment_manage_cities" tools:layout="@layout/fragment_manage_cities"/>
+    <fragment android:id="@+id/settingsFragment"
+              android:name="com.example.material3weatherapp.features.settings.SettingsFragment"
+              android:label="fragment_settings" tools:layout="@layout/fragment_settings"/>
 </navigation>
