@@ -1,22 +1,32 @@
 package com.example.material3weatherapp.features.homeScreen
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.example.material3weatherapp.R
+import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
+import com.example.material3weatherapp.databinding.FragmentHomeScreenBinding
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
 class HomeScreenFragment : Fragment() {
 
+    private val viewModel: HomeScreenViewModel by viewModels()
+    private var _binding: FragmentHomeScreenBinding? = null
+    private val binding get() = _binding!!
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
+
+        _binding = FragmentHomeScreenBinding.inflate(inflater, container, false)
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_home_screen, container, false)
+
+
+        return binding.root
+
     }
 
 }
