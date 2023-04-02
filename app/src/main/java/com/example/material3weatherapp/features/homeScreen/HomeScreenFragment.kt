@@ -1,7 +1,6 @@
 package com.example.material3weatherapp.features.homeScreen
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -34,7 +33,6 @@ class HomeScreenFragment : Fragment() {
         viewLifecycleOwner.lifecycleScope.launchWhenStarted {
             viewModel.breakingNews.collect{
                 val result = it ?: return@collect
-                Log.e("mesaj", result.data?.current?.humidity.toString())
                 binding.textView.text = result.data?.current?.humidity.toString()
             }
         }

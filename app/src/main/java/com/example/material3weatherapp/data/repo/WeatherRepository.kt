@@ -2,6 +2,7 @@ package com.example.material3weatherapp.data.repo
 
 import com.example.material3weatherapp.data.api.WeatherApi
 import com.example.material3weatherapp.data.model.Weather
+import com.example.material3weatherapp.data.room.WeatherDao
 
 import com.example.material3weatherapp.utils.Resource
 import kotlinx.coroutines.flow.Flow
@@ -9,7 +10,8 @@ import kotlinx.coroutines.flow.flow
 import javax.inject.Inject
 
 class WeatherRepository @Inject constructor(
-    private val weatherApi: WeatherApi
+    private val weatherApi: WeatherApi,
+    private val weatherDao: WeatherDao
 ) {
 
     fun getWeather(): Flow<Resource<Weather>> {
@@ -17,6 +19,8 @@ class WeatherRepository @Inject constructor(
             emit(Resource.Loading(null))
             val weather = weatherApi.getWeatherData(WeatherApi.API_KEY,"london",7,"no","no")
             emit(Resource.Success(weather))
+            weatherDao.insertWeather(weather)
+
         }
     }
 
