@@ -10,6 +10,7 @@ import com.google.gson.reflect.TypeToken
 class TypeConverter {
     private val gson = Gson()
 
+    //Condition
     @TypeConverter
     fun fromConditionToString(condition: Current.Condition?): String? {
         return condition?.let {
@@ -24,6 +25,7 @@ class TypeConverter {
         }
     }
 
+    //Current
     @TypeConverter
     fun fromCurrentToString(current: Current?): String? {
         return current?.let {
@@ -38,8 +40,6 @@ class TypeConverter {
         }
     }
 
-
-    ////////////////////////////////////////////////////////////////
 
     // Forecast
     @TypeConverter
@@ -108,12 +108,12 @@ class TypeConverter {
         return gson.fromJson(value, type)
     }
 
-    ////////////////////////////////////////////////////////////
     @TypeConverter
     fun toHourString(hour: Forecast.Forecastday.Hour): String {
         return gson.toJson(hour)
     }
 
+    // Location
     @TypeConverter
     fun fromLocation(location: Location?): String? {
         return location?.let {
